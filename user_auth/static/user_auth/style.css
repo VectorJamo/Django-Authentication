@@ -39,6 +39,9 @@ header {
     align-items: baseline;
 }
 
+.header-content a {
+    color: white;
+}
 .content {
     max-width: 1600px;
   

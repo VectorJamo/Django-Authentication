@@ -14,13 +14,17 @@
     {% else %}
         <title>No Title</title>
     {% endif %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'user_auth/style.css' %}">
 </head>
 <body>
     <header>
         <div class="header-content">
             <h1>Blog-It!</h1>            
-            <p>Welcome, <b>username.</b></p>
+            {% if user.is_authenticated %}
+                <p>Welcome, <b>{{ user.username }}</b></p>
+            {% else %}
+                <p><a href="/login">Login</a> | <a href="/register">Register</a></p>
+            {% endif %}
         </div>
     </header>
     <div class="content">
