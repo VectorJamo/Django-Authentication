@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>No Title</title>
+    {% endif %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Blog-It!</h1>            
+            <p>Welcome, <b>username.</b></p>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content-left">
+            <nav>
+                <a href="#">Profile</a>
+                <a href="#">Saved Blogs</a>
+                <a href="#">Messages</a>
+            </nav>
+        </div>
+        <div class="content-middle">
+            <main>
+                {% block content-middle %}
+                {% endblock %}
+            </main>
+        </div>
+        <div class="content-right">
+            <section>
+                {% block content-right %}
+                {% endblock %}
+            </section>
+        </div>
+    </div>    
+</body>
+</html>
