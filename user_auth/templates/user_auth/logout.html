@@ -1,0 +1,6 @@
+{% extends "user_auth/base.html" %}
+
+{% block content-middle %}
+    <h1>You have been logged out!</h1>
+    <p><a href="{% url 'login-user' %}">Return to login</a>.</p>
+{% endblock %}

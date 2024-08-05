@@ -3,8 +3,34 @@
 {% block content-middle %}
     <form action="{% url 'register-user' %}" method="POST">
         {% csrf_token %}
-        <!--TODO: Create your own HTML form-->
-        {{ form }}
+        
+        <div class="form-element">
+            <label for="first_name">First Name: </label>
+            <input type="text" name="first_name" id="first_name">
+        </div>
+        <div class="form-element">
+            <label for="last_name">Last Name: </label>
+            <input type="text" name="last_name" id="last_name">
+        </div>
+        <div class="form-element">
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div class="form-element">
+            <label for="email">Email: </label>
+            <input type="text" name="email" id="email">
+        </div>
+        <div class="form-element">
+            <label for="password1">Password: </label>
+            <input type="password" name="password1" id="password1">
+        </div>
+        <div class="form-element">
+            <label for="password2">Re-enter Password: </label>
+            <input type="password" name="password2" id="password2">
+        </div>
+
         <input type="submit" value="Create Account">
     </form>
+    <p>Already have an account? <a href="{% url 'login-user' %}">Log in</a>.</p>
+
 {% endblock %}

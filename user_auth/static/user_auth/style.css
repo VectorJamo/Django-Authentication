@@ -2,7 +2,7 @@ html {
     font-family: 'Open Sans';
     font-size: 16px;
 
-    --color-blue: #109cf3;
+    --color-red: #df5151;
     --color-black: #14171A;
     --color-light-gray: #AAB8C2;
     --color-ex-light-gray: #F5F8FA;
@@ -26,7 +26,7 @@ body {
 header {
     font-size: 1.5rem;
     color: var(--color-ex-light-gray);
-    background: var(--color-blue);
+    background: var(--color-red);
     padding: 0.5rem;
 }
 
@@ -41,6 +41,7 @@ header {
 
 .header-content a {
     color: white;
+    text-decoration: none;
 }
 .content {
     max-width: 1600px;
@@ -50,12 +51,16 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: top;
 }
 
 .content-left {
     flex: 0.25;
-    font-size: 1.15rem;
+}
+
+.content-middle {
+    border-left: 1px solid gray;
+    padding: 2rem;
 }
 .content-left a {
     display: block;
@@ -65,10 +70,13 @@ header {
     font-weight: bold;
     text-decoration: none;
     color: var(--color-black);
-
 }
+.content-left a:hover {
+    background: var(--color-light-gray);
+}
+
 .content-left a:hover, .content-left a:active {
-    color: var(--color-blue);
+    color: var(--color-red);
 }
 
 

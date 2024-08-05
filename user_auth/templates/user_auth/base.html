@@ -19,9 +19,14 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>Blog-It!</h1>            
+            <a href="{% url 'homepage' %}"><h1>Blog-It!</h1></a>            
             {% if user.is_authenticated %}
                 <p>Welcome, <b>{{ user.username }}</b></p>
+                <p><a href="{% url 'homepage' %}">Profile</a></p>
+                <form method="POST" action="{% url 'logout-user' %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Log out">
+                </form>
             {% else %}
                 <p><a href="/login">Login</a> | <a href="/register">Register</a></p>
             {% endif %}
