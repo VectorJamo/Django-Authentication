@@ -12,6 +12,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans';
 }
 
 img {
@@ -28,15 +29,26 @@ header {
     color: var(--color-ex-light-gray);
     background: var(--color-red);
     padding: 0.5rem;
+
+    flex: 0.01;
+
+    min-height: 5vh;
 }
 
 .header-content {
-    max-width: 1600px;
-    margin: auto;
-
     display:flex;
     justify-content: space-between;
     align-items: baseline;
+
+    max-width: 1600px;
+    margin: auto;
+}
+
+.header-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
 }
 
 .header-content a {
@@ -44,22 +56,36 @@ header {
     text-decoration: none;
 }
 .content {
-    max-width: 1600px;
-  
-    margin: auto;
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: top;
+
+    max-width: 1600px;
+    min-height: 91vh;
+    margin: auto;
+
+    padding: 0.25rem;
+
 }
 
+.vl {
+    min-height: 100%;
+    width: 1px;
+    background: var(--color-black);
+}
 .content-left {
     flex: 0.25;
 }
 
 .content-middle {
-    border-left: 1px solid gray;
+    flex: 1;
+}
+
+.content-right {
+    flex: 0.15;
+}
+.content-middle {
     padding: 2rem;
 }
 .content-left a {
@@ -79,11 +105,17 @@ header {
     color: var(--color-red);
 }
 
+button, input[type='submit'] {
+    cursor: pointer;
 
-.content-middle {
-    flex: 1;
+    padding: 0.35rem 1rem;
+    font-size: 1rem;
+
+    background: var(--color-ex-light-gray);
+    border-radius: 0.5rem;
 }
 
-.content-right {
-    flex: 0.25;
+button:hover, input[type='submit']:hover {
+    background: var(--color-light-gray);
 }
+

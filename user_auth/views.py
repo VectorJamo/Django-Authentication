@@ -33,3 +33,6 @@ def register_user(request):
         form = forms.UserRegistraionForm()
 
         return render(request, 'user_auth/register.html', {'form': form})
+
+def profile(request):
+    return render(request, 'user_auth/profile.html')
