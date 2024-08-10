@@ -1,14 +1,39 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from . import forms
-
-from django.contrib.auth.decorators import login_required
+from . import models
 
 # Create your views here.
 @login_required
 def homepage(request):
-    return render(request, 'user_auth/homepage.html', {'title': 'Homepage'})
+    blogs = models.Blog.objects.all()
+
+    return render(request, 'user_auth/homepage.html', {'title': 'Homepage', 'blogs': blogs})
+
+def create_post(request):
+    if request.method == 'POST':
+        blog_title = request.POST['title']
+        blog_body = request.POST['body']
+        blog_author = request.user
+        
+        blog = models.Blog(title=blog_title, body=blog_body, author=blog_author)
+        blog.save()
+        
+        return redirect('homepage')
+    
+    return render(request, 'user_auth/create_post.html', {'title': 'Create a post'})
+
+def view_post(request, post_id):
+    blog = models.Blog.objects.get(id=post_id)
+    
+    return render(request, 'user_auth/view_post.html', {'title': 'Post information', 'blog': blog})
+
+def delete_post(request, post_id, del_post_id):
+    models.Blog.objects.get(id=post_id).delete()
+
+    return redirect('homepage')
 
 def register_user(request):
     # TODO: Handle request coming from custom HTML form.
@@ -32,7 +57,15 @@ def register_user(request):
             
         form = forms.UserRegistraionForm()
 
-        return render(request, 'user_auth/register.html', {'form': form})
+        return render(request, 'user_auth/register.html', {'title': 'Register', 'form': form})
 
 def profile(request):
-    return render(request, 'user_auth/profile.html')
+    if request.method == 'POST':
+        updated_bio = request.POST['user-bio']
+
+        current_user = request.user
+        current_user.profile.user_bio = updated_bio
+
+        current_user.profile.save()
+
+    return render(request, 'user_auth/profile.html', {'title': 'User Profile'})

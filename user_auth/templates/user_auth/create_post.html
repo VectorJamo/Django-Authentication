@@ -1,0 +1,23 @@
+{% extends "user_auth/base.html" %}
+
+{% block content-middle %}
+<form action="{% url 'create-post' %}" method="POST">
+    {% csrf_token %}
+    <div class="blog-form-element">
+        <label for="title">Title:</label>
+        <br>
+        <input type="text" name="title" id="title">
+    </div>
+    <br>
+    <div class="blog-form-element">
+        <label for="body">Body:</label>
+        <br>
+        <textarea name="body" id="body" cols="20" rows="6"></textarea>
+    </div>
+    <br>
+    <div class="blog-form-element">
+        <input type="submit" value="Create Post">
+    </div>
+</form>
+
+{% endblock %}

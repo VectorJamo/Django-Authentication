@@ -1,5 +1,17 @@
 {% extends "user_auth/base.html" %}
 
 {% block content-middle %}
-    <p>Blogs will appear here.</p>
+    {% if blogs|length == 0 %}
+        <h2>No blogs to display.</h2>
+    {% else%}
+        <ol>
+            {% for blog in blogs %}
+            <li>
+                <a href="post/{{blog.id}}"><h2>{{blog.title}}</h2></a>
+                <p>{{blog.body}}</p>
+                <p>Author: {{blog.author.username}}</p>
+            </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
 {% endblock %}

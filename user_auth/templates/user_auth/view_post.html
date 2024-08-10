@@ -1,0 +1,17 @@
+{% extends "user_auth/base.html" %}
+
+{% block content-middle %}
+    <h4>Title:</h4>
+    <h2>{{blog.title}}</h2>
+    <br>
+    <h4>Body:</h4>
+    <p>{{blog.body}}</p>
+    <br>
+    <h4>Posted by:</h4>
+    <p>{{blog.author}}</p>
+
+    <br>
+    {% if user.username == blog.author.username %}
+        <a href="delete-post/{{blog.id}}"><button>Delete</button></a>
+    {% endif %}
+{% endblock %}

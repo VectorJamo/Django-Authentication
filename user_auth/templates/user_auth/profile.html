@@ -7,7 +7,18 @@
     <p>Email: {{user.email}}</p>
     <br>
     <h3>Bio:</h3>
-    <form action="{% url 'profile' %}" method="POST">
-        <textarea></textarea>
-    </form>
+    <p>{{user.profile.user_bio}}</p>
+
+    <br>
+    <br>
+    <div class="bio-edit">
+        <label for="user-bio">Edit bio:</label>
+        <form action="{% url 'profile' %}" method="POST">
+            {% csrf_token %}
+            <textarea name="user-bio" id="user-bio" cols="30" rows="5">{{user.profile.user_bio}}</textarea>
+            <br>
+            <br>
+            <input type="submit" value="Change Bio">
+        </form>
+    </div>
 {% endblock %}
