@@ -12,6 +12,28 @@
 
     <br>
     {% if user.username == blog.author.username %}
-        <a href="delete-post/{{blog.id}}"><button>Delete</button></a>
+        <a href="delete-post/{{blog.id}}"><button>Delete Post</button></a>
+        <br>
+        <br>
+        <h3>Edit post:</h3>
+        <form action="/post/{{blog.id}}/" method="POST">
+            {% csrf_token %}
+            <div class="blog-form-element">
+                <label for="title">Title:</label>
+                <br>
+                <input type="text" name="title" id="title" value="{{blog.title}}">
+            </div>
+            <br>
+            <div class="blog-form-element">
+                <label for="body">Body:</label>
+                <br>
+                <textarea name="body" id="body" cols="20" rows="6">{{blog.body}}</textarea>
+            </div>
+            <br>
+            <div class="blog-form-element">
+                <input type="submit" value="Edit Post">
+            </div>
+        </form>
+        
     {% endif %}
 {% endblock %}

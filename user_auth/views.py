@@ -26,6 +26,15 @@ def create_post(request):
     return render(request, 'user_auth/create_post.html', {'title': 'Create a post'})
 
 def view_post(request, post_id):
+    if request.method == 'POST':
+        blog = models.Blog.objects.get(id=post_id)
+        blog.title = request.POST['title']
+        blog.body = request.POST['body']
+
+        blog.save()
+
+        return render(request, 'user_auth/view_post.html', {'title': 'Post information', 'blog': blog})
+
     blog = models.Blog.objects.get(id=post_id)
     
     return render(request, 'user_auth/view_post.html', {'title': 'Post information', 'blog': blog})
